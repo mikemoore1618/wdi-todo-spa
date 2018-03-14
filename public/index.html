@@ -17,6 +17,15 @@
     // your code:
     var httpClient = axios.create()
     
+    // The front-end
+    // 1. When a user goes to localhost:3000, they'll be served this html file. This script should immediately attempt to load all Todo items, and display them in <li> tags within a <ul>. Each <li> will have a <span> that contains the todo body, and buttons to toggle complete and delete.
+    
+    // 2. Create a text field and button that allows a user to submit a new todo item with a post request. When this client app receives confirmation from the server that a todo item was saved, append or prepend the new item to the <ul> 
+    
+    // 3. Using jQuery's event delegation, make all todo item toggle-complete and delete items clickable, regardless of whether or not those items exist on the page now or are created in the future. 
+    // More info: https://learn.jquery.com/events/event-delegation/
+
+    // 4. Once there are event listeners for toggle-complete and delete, make those buttons send an HTTP request with axios, PATCH and DELETE respectively. 
   </script>
 </body>
 </html>
