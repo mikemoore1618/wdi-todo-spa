@@ -4,18 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- milligram CSS -->
+  <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <!-- Axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <title>To-Do SPA</title>
+  <title>Todo SPA</title>
 </head>
 <body>
-  <h1>To-Do SPA</h1>
-
+  <h1>Todo SPA</h1>
+  <ul id='list'></ul>
+  <div id='form'>
+    <input type='text' id='body' placeholder='What do you want Todo?'>
+    <button>Add Todo</button>
+  </div>
   <script>
-    // your code:
-    var apiClient = axios.create()
     
     // The front-end
     // 1. When a user goes to localhost:3000, they'll be served this html file. This script should immediately attempt to load all Todo items, and display them in <li> tags within a <ul>. Each <li> will have a <span> that contains the todo body, and buttons to toggle complete and delete.
@@ -32,5 +36,6 @@
       // Bulma (Medium): https://bulma.io
       // Semantic UI (Hard): https://semantic-ui.com/
   </script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
