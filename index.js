@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const
   express = require('express'),
   app = express(),
@@ -12,12 +13,7 @@ mongoose.connect('mongodb://localhost/todo-spa', (err) => {
 
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.static(`${__dirname}/public`))
-
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/public/index.html`)
-})
-
+app.use(express.static('public'))
  
 /* ON THE SERVER SIDE:
 1. Build your Todo model in './models/Todo.js' (more info in that file)
