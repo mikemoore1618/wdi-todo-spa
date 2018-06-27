@@ -18,11 +18,22 @@ app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/public/index.html`)
 })
 
-// The back-end
-// 1. Build your Todo model in './models/Todo.js'
-// 2. Build your 5 Todo CRUD routes here.
-//    the "update" route should toggle a Todo's 'completed' Boolean
-// 3. Test all of your routes in postman (they only need to send and receive JSON)
+ 
+/* ON THE SERVER SIDE:
+1. Build your Todo model in './models/Todo.js' (more info in that file)
+
+2. Build your 5 Todo CRUD routes here:
+   a. GET "/api/todos" to retrieve all todo's
+   b. GET "/api/todos/:id" to retrieve a single todo
+   c. POST "/api/todos" to create a new todo
+   d. DELETE "/api/todos/:id" to destroy
+   e. PATCH "/api/todos/:id" to update todo. 
+      Don't worry about updating the todo's body,
+      this route should simply toggle a todo's 'completed'
+      Boolean value between true / false.
+
+3. Test all of your routes in Postman (they only need to send and receive JSON)
+*/
 
 app.listen(PORT, (err) => {
   console.log(err || `Server running on port ${PORT}.`)
