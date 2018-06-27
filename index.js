@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config() // make sure to create a .env, and add a MONGODB_URI to it before starting the app.
 
 const
   express = require('express'),
@@ -20,7 +20,7 @@ app.use(express.static('public'))
 
 2. Build your 5 Todo CRUD routes here:
    a. GET "/api/todos" to retrieve all todo's
-   b. GET "/api/todos/:id" to retrieve a single todo
+   b. GET "/api/todos/:id" to retrieve a single todo (you may not need this route in the front end, but hey we're RESTful)
    c. POST "/api/todos" to create a new todo
    d. DELETE "/api/todos/:id" to destroy
    e. PATCH "/api/todos/:id" to update todo. 
