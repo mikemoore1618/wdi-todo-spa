@@ -1,9 +1,9 @@
+require('dotenv').config()
 const
   express = require('express'),
   app = express(),
   mongoose = require('mongoose'),
   logger = require('morgan'),
-  bodyParser = require('body-parser')
   PORT = 3000
 
 mongoose.connect('mongodb://localhost/todo-spa', (err) => {
@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/todo-spa', (err) => {
 })
 
 app.use(logger('dev'))
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(express.static(`${__dirname}/public`))
 
 app.get('/', (req, res) => {
