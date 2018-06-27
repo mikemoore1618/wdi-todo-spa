@@ -8,7 +8,7 @@
 
 ---
 
-Development tips for the back-end can be found in `/index.js`
+Instructions for server-side development can be found in `/server.js`
 
-Development tips for the front-end can be found in `/public/index.html`
+Instructions for client-side development can be found in `/public/index.html`
 
