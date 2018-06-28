@@ -20,21 +20,25 @@ apiClient({ method: 'get', url: '/api/todos' }).then((apiResponse) => {
         })
     });
 
-$addTodo.on('click', function() {
+$addTodo.on('click', function(evt) {
+    evt.preventDefault()
     const formData = {
         body: $body.val()
     }
     apiClient({ method: 'post', url: 'api/todos', data: formData }).then(
         (apiResponse) => {
-            const todo = apiResponse.data.toDo;
+            const todo = apiResponse.data.todo;
             console.log(todo)
                 $list.append(`
                     <li id="${todo._id}">
-                    <span class="toggle ${t.completed ? 'completed' : ''}">
-                        ${t.body}
+                    <span class="toggle ${todo.completed ? 'completed' : ''}">
+                        ${todo.body}
                     </span>
                     <button class="delete">✕</button>
+                    </li>
                 `)
+                $body.val('')
+                $body.focus()
         }
     )
 });
@@ -46,14 +50,12 @@ $list.on('click', '.toggle', function() {
     }
     const todoId = $(this).parent().attr('id');
     apiClient({ method: 'patch', url: `/api/todos/${todoId}`}).then((apiResponse) => {
-        if(apiResponse.data.toDo.completed) {
-            console.log(apiResponse.data.toDo)
-            console.log($(this).toggleClass('completed'))
+        if(apiResponse.data.todo.completed) {
             // add the completed class to the span
-            // $(this).toggleClass('completed')
+            $(this).addClass('completed')
         } else {
             // remove it
-            // $(this).removeClass('completed')
+            $(this).removeClass('completed')
         }
     })
 });
