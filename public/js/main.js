@@ -11,7 +11,7 @@ apiClient({ method: 'get', url: '/api/todos' }).then((apiResponse) => {
     todos.forEach((t) => {
         $list.append(`
                 <li id="${t._id}">
-                    <span class="toggle">
+                    <span class="toggle ${t.completed ? 'completed' : ''}">
                         ${t.body}
                     </span>
                     <button class="delete">✕</button>
@@ -26,7 +26,7 @@ $addTodo.on('click', function() {
     }
     apiClient({ method: 'post', url: 'api/todos', data: formData }).then(
         (apiResponse) => {
-            const todo = apiResponse.data.todo;
+            const todo = apiResponse.data.toDo;
             console.log(todo)
                 $list.append(`
                     <li id="${todo._id}">
@@ -44,20 +44,16 @@ $list.on('click', '.toggle', function() {
     const formData = {
         body: $body.val()
     }
-    // const todoId = $(this).parent().attr('id');
-    apiClient({ method: 'patch', url: `/api/todos/`, data: formData }).then((apiResponse) => {
-        let todo = apiResponse.data.todo
-            console.log(todo)
-            $list.append(`
-            <li id="${todo._id}">
-                ${todo.body} //
-                Completed: ${todo.completed} //
-                <button class="delete">X</button>
-            </li>
-            `)
-            todo.body.strike('')
+    const todoId = $(this).parent().attr('id');
+    apiClient({ method: 'patch', url: `/api/todos/${todoId}`}).then((apiResponse) => {
+        if(apiResponse.data.toDo.completed) {
+            // add the completed class to the span
+            $(this).parent().completed
+        } else {
+            $(this).parent()
         }
-    )
+    })
+    
 });
 
 $list.on('click', '.delete', function() {
