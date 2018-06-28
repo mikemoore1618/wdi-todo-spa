@@ -28,6 +28,7 @@ module.exports = {
 
     //update a todo(toggle)
     //for patch request we dont need to supply request body because we want app to know what we want to change it to-true or false(toggle)
+    
     update: (req,res) => {
       let id = req.params.id
       Todo.findById(id, (err, todoItem) => {
@@ -35,7 +36,7 @@ module.exports = {
         todoItem.completed = !todoItem.completed
         todoItem.save((err, savedTodo) => {
           if(err) throw err;
-          res.json({status: true, message: "Todo Updated", toDo: savedTodo})
+          res.json({ success: true, message: "Todo Updated", toDo: savedTodo})
         })
       })
   },

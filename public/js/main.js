@@ -30,8 +30,8 @@ $addTodo.on('click', function() {
             console.log(todo)
                 $list.append(`
                     <li id="${todo._id}">
-                    <span class="toggle">
-                        ${todo.body}
+                    <span class="toggle ${t.completed ? 'completed' : ''}">
+                        ${t.body}
                     </span>
                     <button class="delete">✕</button>
                 `)
@@ -47,14 +47,17 @@ $list.on('click', '.toggle', function() {
     const todoId = $(this).parent().attr('id');
     apiClient({ method: 'patch', url: `/api/todos/${todoId}`}).then((apiResponse) => {
         if(apiResponse.data.toDo.completed) {
+            console.log(apiResponse.data.toDo)
+            console.log($(this).toggleClass('completed'))
             // add the completed class to the span
-            $(this).parent().completed
+            // $(this).toggleClass('completed')
         } else {
-            $(this).parent()
+            // remove it
+            // $(this).removeClass('completed')
         }
     })
-    
 });
+
 
 $list.on('click', '.delete', function() {
     const todoId = $(this).parent().attr('id')
